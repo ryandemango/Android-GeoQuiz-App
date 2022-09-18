@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">GeoQuiz</string>
+    <string name="question_text">hi</string>
+    <string name="true_button">True</string>
+    <string name="false_button">False</string>
+    <string name="correct_toast">Correct Answer!</string>
+    <string name="incorrect_toast">Incorrect Answer!</string>
+    <string name="warning_text">Are you sure you want to do this?</string>
+    <string name="show_answer_button">Show Answer</string>
+    <string name="cheat_button">Cheat!</string>
+    <string name="judgment_toast">Cheating is wrong.</string>
+    <string name="next_button">Next</string>
+    <string name="prev_button">Prev</string>
+    <string name="question1">1. Slovenia and France share a border. </string>
+    <string name="question2">2. Vatican City is the smallest country on Earth. </string>
+    <string name="question3">3. Brasília is the capital of Brazil. </string>
+    <string name="question4">4. Mount Kilimanjaro is a volcano. </string>
+    <string name="question5">5. Chicago is a city in Illinois. </string>
+    <string name="question6">6. Halong Bay is in the Philippines. </string>
+    <string name="question7">7. The Rio Grande is in Europe. </string>
+    <string name="question8">8. The longest river in Europe is the Volga. </string>
+    <string name="question9">9. The Chuitna river is in Hawaii. </string>
+    <string name="question10">10. The Taj Mahal is in Russia. </string>
+
+</resources>
