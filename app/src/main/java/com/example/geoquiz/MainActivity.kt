@@ -21,8 +21,7 @@ private const val REQUEST_CODE_CHEAT = 0
 class MainActivity : AppCompatActivity() {
     private lateinit var trueButton: Button
     private lateinit var falseButton: Button
-    private lateinit var nextButton: ImageButton
-    private lateinit var prevButton: ImageButton
+    private lateinit var nextButton: Button
     private lateinit var cheatButton: Button
     private lateinit var questionTextView: TextView
 
@@ -42,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
         nextButton = findViewById(R.id.next_button)
-        prevButton = findViewById(R.id.prev_button)
         cheatButton = findViewById(R.id.cheat_button)
         questionTextView = findViewById(R.id.question_text_view)
 
@@ -65,30 +63,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         nextButton.setOnClickListener { view: View ->
-            val positive = if (quizViewModel.currentIndex == 9) {
-                quizViewModel.currentIndex = 9
-                Toast.makeText(this,"This is the last question" , Toast.LENGTH_SHORT)
-                    .show()
 
-            } else {
             quizViewModel.moveToNext()
-            }
+
             updateQuestion()
 
         }
-        prevButton.setOnClickListener { view: View ->
-            val negative = if (quizViewModel.currentIndex == 0) {
-                quizViewModel.currentIndex = 0
-                Toast.makeText(this,"This is the first question" , Toast.LENGTH_SHORT)
-                    .show()
 
-            } else {
-            quizViewModel.moveToPrev()
-            }
-            updateQuestion()
-
-        }
-        updateQuestion()
 
     }
     override fun onActivityResult(requestCode: Int,
@@ -138,15 +119,11 @@ class MainActivity : AppCompatActivity() {
         val questionTextResId = quizViewModel.currentQuestionText
         questionTextView.setText(questionTextResId)
     }
-    var correct = arrayOf(true, true, true, true, true, true, true, true, true, true)
+
     private fun checkAnswer(userAnswer: Boolean) {
         val correctAnswer = quizViewModel.currentQuestionAnswer
 
-        if (userAnswer == correctAnswer){
-            correct.set(quizViewModel.currentIndex, true)
-        } else {
-            correct.set(quizViewModel.currentIndex, false)
-        }
+
         val messageResId = when {
             quizViewModel.isCheater -> R.string.judgment_toast
             userAnswer == correctAnswer -> R.string.correct_toast
@@ -154,14 +131,6 @@ class MainActivity : AppCompatActivity() {
         }
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
             .show()
-
-        if (quizViewModel.currentIndex == 9){
-            val count = correct.count { it }
-            var c = count.toInt()
-            var c2 = c*10
-            Toast.makeText(this, "percentage: $c2", Toast.LENGTH_SHORT)
-                .show()
-        }
     }
 
 }
